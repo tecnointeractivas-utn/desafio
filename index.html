@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Login UI</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bgMain:#283a9e;
+    --bgCard1:#6c5ce7;
+    --bgCard2:#4c51e0;
+    --edge:#8d86ff;
+    --text:#ffffff;
+    --muted:#cfd6ff;
+    --input1:#3d3aa6;
+    --input2:#2b2a86;
+    --pillGreen:#2de178;
+    --pillYellow:#ffd36a;
+    --pillBlue:#a9d9ff;
+    --btnPink1:#ff92e6;
+    --btnPink2:#ff49cf;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+    color:var(--text);
+    background: radial-gradient(900px 500px at 75% 0%, #3b79ff33 0%, transparent 60%),
+                linear-gradient(145deg,#1b2a85 0%, #2256e3 100%);
+    display:grid;place-items:center;padding:24px;
+  }
+
+  .card{
+    width:min(520px, 94vw);
+    background:linear-gradient(180deg,var(--bgCard1) 0%, var(--bgCard2) 100%);
+    border:2px solid var(--edge);
+    border-radius:24px;
+    box-shadow:0 16px 40px rgba(0,0,0,.35);
+    padding:24px 22px 20px;
+  }
+  .card-inner{
+    border:2px solid #493ad9;
+    border-radius:18px;
+    padding:20px;
+    background:linear-gradient(180deg, #5c53e6 0%, #403bd1 100%);
+  }
+
+  h1{margin:0 0 8px;font-size:2rem;line-height:1.1}
+  p.lead{margin:0 0 18px;color:var(--muted)}
+
+  label{display:block;margin:10px 0 8px;color:#e7e7ff;font-weight:600}
+  .field{
+    width:100%;
+    padding:14px 16px;
+    border-radius:14px;
+    border:2px solid #7c78ff;
+    background:linear-gradient(180deg,var(--input1),var(--input2));
+    color:#fff;font-size:1rem;outline:none;
+    transition:.2s border-color,.2s box-shadow;
+    box-shadow: 0 4px 0 #2b2a86 inset;
+  }
+  .field::placeholder{color:#cfc6ff8f}
+  .field:focus{border-color:#c49bff;box-shadow:0 0 0 4px #c49bff33}
+
+  .row{
+    display:flex;align-items:center;justify-content:space-between;
+    gap:12px;margin:10px 0 14px;
+  }
+  .remember{display:flex;align-items:center;gap:10px;color:#e7e7ff}
+  .remember input{accent-color:#31e36a;width:18px;height:18px}
+  .link{color:#ffffff;font-weight:700;text-decoration:none}
+  .link:hover{text-decoration:underline}
+
+  .btn{
+    width:100%;
+    border:none;cursor:pointer;
+    color:#2a0031;font-weight:800;font-size:1.05rem;
+    padding:14px 16px;border-radius:18px;
+    background:linear-gradient(180deg,var(--btnPink1),var(--btnPink2));
+    box-shadow:0 10px 0 #c32aa5, 0 20px 30px rgba(0,0,0,.35);
+    transition:transform .12s ease-in-out;
+  }
+  .btn:active{transform:translateY(2px);box-shadow:0 8px 0 #c32aa5}
+
+
+  .dot{
+    width:12px;height:12px;border-radius:50%;
+    background:#0bff64;box-shadow:0 0 0 4px #6bff9b55;
+  }
+
+  /* fino borde exterior como en la imagen */
+  .card::before{
+    content:"";position:absolute;inset:-8px;pointer-events:none;border-radius:28px;
+  }
+
+  @media (max-width:420px){
+    h1{font-size:1.6rem}
+  }
+</style>
+</head>
+<body>
+  <section class="card">
+    <div class="card-inner">
+      <h1>Inicia sesión</h1>
+      <p class="lead">Bienvenido de vuelta. Usa tus credenciales para continuar.</p>
+
+     <form action="#" method="post" novalidate>
+  <label for="email">Correo</label>
+  <input id="email" class="field" type="email" placeholder="tu@correo.com" required>
+
+  <label for="pass">Contraseña</label>
+  <input id="pass" class="field" type="password" placeholder="••••••••" required>
+
+  <div class="row">
+    <label class="remember">
+      <input id="remember" type="checkbox"> Recuérdame
+    </label>
+    <a class="link" href="#" id="reset">¿Olvidaste tu contraseña?</a>
+  </div>
+
+  <button class="btn" type="submit">Entrar</button>
+  <div class="row" style="margin:10px; padding-top:10px ; justify-content:center;">
+    <button class="btn" id="signup" type="button" style="width:auto; padding:10px 14px;">Crear cuenta</button>
+  </div>
+</form>
+
+
+
+    </div>
+  </section>
+<!-- Scripts (al final del body) -->
+<script type="module" src="./auth.js"></script>
+</body>
+</html>
+
+

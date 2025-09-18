@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin – Skills</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    .admin{max-width:min(1100px,92vw); margin:0 auto;}
+    .toolbar{display:flex; gap:10px; justify-content:space-between; align-items:center; margin-bottom:14px;}
+    .title{font-weight:800; font-size:1.3rem;}
+    .btn{border:none; cursor:pointer; color:#2a0031; font-weight:800; font-size:1rem;
+      padding:10px 14px; border-radius:14px;
+      background:linear-gradient(180deg,#ff92e6,#ff49cf);
+      box-shadow:0 6px 0 #c32aa5, 0 12px 20px rgba(0,0,0,.25);
+      transition:transform .12s ease-in-out;
+    }
+    .btn:active{transform:translateY(1px); box-shadow:0 5px 0 #c32aa5;}
+    .grid{display:grid; gap:12px;}
+    .row{display:grid; grid-template-columns:64px 1fr 130px 110px; gap:10px; align-items:center;}
+    .row input{width:100%; padding:10px 12px; border-radius:12px; border:2px solid #7c78ff;
+      background:linear-gradient(180deg,#3d3aa6,#2b2a86); color:#fff; outline:none; box-shadow: 0 4px 0 #2b2a86 inset;}
+    .row input::placeholder{color:#cfc6ff8f}
+    .row .actions{display:flex; gap:8px; justify-content:flex-end;}
+    .small{opacity:.85; font-size:.95rem;}
+    .help{opacity:.8; margin-top:8px;}
+    .link{color:#fff; text-decoration:none; font-weight:700;}
+    .pill{display:inline-block; padding:8px 12px; border-radius:14px; background:#f15ccb; font-weight:800;}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="card admin">
+      <header class="card__header">
+        <div class="user">
+          <div class="user__avatar" style="width:48px;height:48px;"><img src="imgAvatar.png" alt="Avatar" /></div>
+          <div class="pill">Panel de administración</div>
+        </div>
+        <nav class="toolbar">
+          <a class="more" href="main.html">← Volver a Main</a>
+          <button id="btn-logout" class="more">Cerrar sesión</button>
+        </nav>
+      </header>
+
+      <div class="right" style="margin-top:10px;">
+        <div class="toolbar">
+          <div class="title">Skills que se muestran en "Main"</div>
+          <div class="actions">
+            <button id="add-skill" class="btn">+ Añadir skill</button>
+            <button id="save" class="btn">Guardar</button>
+          </div>
+        </div>
+
+        <div class="grid" id="skills-grid" aria-live="polite"></div>
+        <p class="help">Consejo: usa un emoji en <strong>Icono</strong> (ej.: 🧠) y valores de 0 a 100 en <strong>%</strong>. Se guardan en tu navegador (localStorage).</p>
+      </div>
+
+      <footer class="card__footer">
+        <span class="small">¿Necesitas restablecer a los valores por defecto?</span>
+        <button id="reset" class="more">Restablecer</button>
+      </footer>
+    </section>
+  </main>
+
+  <script type="module">
+    import { requireAuth, logout } from './auth.js';
+    requireAuth();
+    document.getElementById('btn-logout')?.addEventListener('click', logout);
+  </script>
+  <script src="admin.js"></script>
+</body>
+</html>
